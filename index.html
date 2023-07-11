@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box-1{
+            border: 1px solid red;
+            min-height: 100px;
+            padding: 10px;
+        }
+        .emoji{
+            background: url(./emoji-82-40_5b2f075.webp);
+            width: 32px;
+            height: 32px;
+            display: inline-block;
+            background-size: 160px 160px;
+            background-position: 0px -128px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        <p contenteditable="true">1</p>
+        <p contenteditable="true">2</p>
+        <p contenteditable="true">3</p>
+        <p contenteditable="true">4</p>
+        <div>{{ savedOffset }}</div>
+        <span @click="插入表情()">插入</span>
+        <div @copy="copy">
+            123456
+            <img class="emoji" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="😀" srcset="">
+            789
+        </div>
+        <div>
+            <span class="emoji" contenteditable="false">😅</span>
+        </div>
+        <div>
+            <button @click="restoreCursor()">恢复光标位置</button>
+            <button @click="指定光标位置()">指定光标位置</button>
+        </div>
+        <div class="box-1" id="editableDiv" contenteditable="true" ref="box_1" 
+            @click="clickDiv" @blur="getblur" @input="handleSelect" 
+            @compositionstart="compositionstart"
+            @compositionend="compositionend"
+            @keyup="keyup"
+        >
+            这是一段示例文本。
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
